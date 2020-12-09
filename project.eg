@@ -1,4 +1,6 @@
 {
     "projectPath": "../denkui",
-    "sourceDir": "src"
+    "sourceDir": "src",
+    "entry": "test/testLife.ts",
+    "args": "-A"
 }

@@ -33,8 +33,12 @@ const convertFileToAt = (file:any) => {
         let res = regItem.exec(imp)
         console.info('FileLoader load mport:[' + imp+ ']', res)
         if (res &&res?.length > 1) {
-            let regTarget = res[1].replace('\"','').replace('\'','') 
-            if (regTarget.indexOf('@') === -1) {
+            let regTarget = res[1].replace('\"','').replace('\'','')
+            if (regTarget.includes('*')) {
+
+            } else if (regTarget.includes("https")) {
+                // do nothing
+            } else if (regTarget.indexOf('@') === -1) {
                 let out = imp.replace(regTarget, file.dir + '/' + regTarget).replace(srcPath, '@')
                 out = Base.shortPath(out)
                 content = content.replace(imp, out)
